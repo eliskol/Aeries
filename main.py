@@ -34,7 +34,7 @@ def login():
 def _class(encoded_class_name):
     decoded_class_name = urllib.parse.unquote(encoded_class_name)
     if decoded_class_name in session['classes']:
-        return session['classes'][decoded_class_name]
+        return render_template('class.html', _class=session['classes'][decoded_class_name])
 
 
 app.run(host='0.0.0.0', port=3000)

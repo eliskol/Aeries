@@ -63,5 +63,4 @@ class Aeries:
             current_class_dict['percent_grade'] = classes[i].find('td', 'gcc-cell').text
             current_class_dict['letter_grade'] = list(classes[i].findChildren())[12].text
             current_class_dict['encoded_class_name'] = urllib.parse.quote(current_class_dict['name'])
-        print(self.classes)
         return self.classes
