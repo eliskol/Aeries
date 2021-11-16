@@ -9,7 +9,7 @@
 <body>
     <ol>
         {% for class in classes %}
-        <li><a href="/class/{{class['encoded_class_name']}}">{{class['name']}}</a></li>
+        <li><a href="/class/{{classes[class]['encoded_class_name']}}">{{classes[class]['name']}}</a></li>
         {%endfor%}
     </ol>
 </body>

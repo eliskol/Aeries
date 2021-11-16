@@ -50,15 +50,18 @@ class Aeries:
         classes = parsed_gradebook_html.find_all(
             'tr', id=lambda x: x and x.endswith('Item'))
 
-        self.classes = []
+        self.classes = {}
 
         for i in range(0, len(classes)):
-            self.classes.append({})
-            current_class_dict = self.classes[i]
+            self.classes[classes[i].find(
+                'a', 'link-gradebook-details').text] = {}
+            current_class_dict = self.classes[classes[i].find(
+                'a', 'link-gradebook-details').text]
             current_class_dict['name'] = classes[i].find(
                 'a', 'link-gradebook-details').text
             current_class_dict['period'] = list(classes[i].findChildren())[6].text
             current_class_dict['percent_grade'] = classes[i].find('td', 'gcc-cell').text
             current_class_dict['letter_grade'] = list(classes[i].findChildren())[12].text
             current_class_dict['encoded_class_name'] = urllib.parse.quote(current_class_dict['name'])
+        print(self.classes)
         return self.classes
